@@ -11,7 +11,7 @@ interface on {
 }
 
 declare namespace PIXI {
-    class Graphics {
+    interface Graphics {
         drawPath(path: PIXI.tween.TweenPath): PIXI.Graphics;
     }
 
@@ -29,7 +29,7 @@ declare namespace PIXI {
             repeat?: number;
             time?: number;
             on?: on;
-            speed?: number; 
+            speed?: number;
         }
 
         class Tween {
@@ -52,7 +52,7 @@ declare namespace PIXI {
             addTo(manager: PIXI.tween.TweenManager): PIXI.tween.Tween;
             chain(tween: PIXI.tween.Tween): PIXI.tween.Tween;
             clear(): PIXI.tween.Tween;
-            config(config: PIXI.tween.tweenConfig);
+            config(config: PIXI.tween.tweenConfig): void;
             from(data?: object): PIXI.tween.Tween;
             remove(): PIXI.tween.Tween;
             reset(): PIXI.tween.Tween;
@@ -60,10 +60,10 @@ declare namespace PIXI {
             startPromise(): Promise<any>;
             stop(end?: boolean): PIXI.tween.Tween;
             to(data: object): PIXI.tween.Tween;
-            update(deltaMS: number);
-            once(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any);
-            on(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any);
-            off(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any, once?: boolean);
+            update(deltaMS: number): void;
+            once(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any): void;
+            on(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any): void;
+            off(event: "start" | "end" | "repeat" | "update" | "stop" | "pingpong", fn: Function, context?: any, once?: boolean): void;
         }
 
         interface Easing {
@@ -103,11 +103,11 @@ declare namespace PIXI {
         class TweenManager {
             constructor();
             tweens: Array<PIXI.tween.Tween>;
-            addTween(tween: PIXI.tween.Tween);
+            addTween(tween: PIXI.tween.Tween): void;
             createTween(target: object, config?: PIXI.tween.tweenConfig): PIXI.tween.Tween;
             getTweensForTarget(target: object): Array<PIXI.tween.Tween>;
-            removeTween(tween: PIXI.tween.Tween);
-            update(deltaMS: number);
+            removeTween(tween: PIXI.tween.Tween): void;
+            update(deltaMS: number): void;
         }
 
         class TweenPath {
@@ -134,8 +134,9 @@ declare namespace PIXI {
             totalDistance(): number;
         }
 
-		tweenManager: PIXI.tween.TweenManager;
-	}
+    }
+
+    const tweenManager: PIXI.tween.TweenManager;
 }
 
 declare module "pixi-tween" {

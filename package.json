@@ -8,6 +8,7 @@
   ],
   "main": "bin/pixi-tween.min.js",
   "module": "bin/pixi-tween.es.min.js",
+  "types": "./pixi-tween.d.ts",
   "homepage": "https://github.com/themoonrat/pixi-tween",
   "bugs": "https://github.com/themoonrat/pixi-tween/issues",
   "license": "MIT",
