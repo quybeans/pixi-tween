@@ -36,7 +36,7 @@ declare namespace PIXI {
             constructor(target: object, manager?: PIXI.tween.TweenManager, config?: PIXI.tween.tweenConfig);
             readonly active: boolean;
             delay: number;
-            easing: PIXI.tween.Easing;
+            easing: Function;
             readonly elapsedTime: number;
             expire: boolean;
             readonly isEnded: boolean;
